@@ -18,17 +18,20 @@ function FindCity() {
         "lon": "-117.1627728"
     })
 
+
     return (
         <div className="Explore">
             {/* <Form> */}
             <Form.Group>
-                <Form.Label>Name of City</Form.Label>
+                <Form.Label className="label">Name of City</Form.Label>
                 <Form.Control onChange={function (event) {
 
                     userInput = event.target.value
                 }} type="text" placeholder="Enter City Name" />
                 <Button onClick={function (event) {
                     let url = `https://us1.locationiq.com/v1/search?key=${key}&q=${userInput}&format=json`
+                    
+                    let map = `https://maps.locationiq.com/v3/staticmap`
 
                     var response = axios.get(url)
                     response.then(function (res) {
@@ -47,7 +50,7 @@ function FindCity() {
                     <Card.Title>{cityData.display_name}</Card.Title>
                     <Card.Text>{cityData.lat}</Card.Text>
                     <Card.Text>{cityData.lon}</Card.Text>
-                    <Card.Img></Card.Img>
+                    <Card.Img src={`https://maps.locationiq.com/v3/staticmap?key=${key}&center=${cityData.lat},${cityData.lon}&zoom=11`}></Card.Img>
                 </Card.Body>
             </Card>
         </div>

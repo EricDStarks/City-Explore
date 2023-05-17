@@ -2,12 +2,12 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes city {
+  0% {background-color: #282c34;}
+  25% {background-color: skyblue;}
+  50% {background-color: pink;}
+  100% {background-color: #282c34;}
 }
-
-
 
 .App-header {
   background-color: #282c34;
@@ -18,12 +18,18 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  animation-name: city;
+  animation-duration: 25s;
+  animation-delay: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 button {
   margin-left: 5px;
+  
 }
 
 .label {
-  margin-right: 5px;
+  margin-right: 10px;
 }

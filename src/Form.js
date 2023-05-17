@@ -13,9 +13,10 @@ function FindCity() {
     var userInput = ""
     let key = "pk.1d13b86de8bd81abf5284388a4607024"
     const [cityData, setCityData] = useState({
-        "display_name": "San Diego, San Diego County, California, USA",
-        "lat": "32.7174202",
-        "lon": "-117.1627728"
+        
+        // "display_name": "San Diego, San Diego County, California, USA",
+        // "lat": "32.7174202",
+        // "lon": "-117.1627728"
     })
 
 

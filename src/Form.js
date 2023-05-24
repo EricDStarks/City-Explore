@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import axios from 'axios';
 import { useState } from 'react';
+import Weather from "./Weather";
 
 
 
@@ -18,6 +19,9 @@ function FindCity() {
         // "lat": "32.7174202",
         // "lon": "-117.1627728"
     })
+
+    const [weather, setWeather] = useState([])
+    const [errorMessage, setErrorMessage] = useState("")
 
 
     return (
@@ -40,7 +44,18 @@ function FindCity() {
                         setCityData(res.data[0])
                     })
 
+                    let weather = `http://localhost:3001/Weather?lat=4&lon=4&searchQuery=Paris`
+                    let weatherResponse = axios.get(weather)
+                    weatherResponse.then(function(res){
+                    console.log(res.data)
+                    setWeather(res.data)
+                    })
 
+                    weatherResponse.catch(function(error){
+                        setErrorMessage(error.message)
+                    })
+
+                    
                     //make API call to LocationIQ for geographic coordinates
 
                 }} variant="primary" type="submit">Find</Button>
@@ -54,6 +69,8 @@ function FindCity() {
                     <Card.Img src={`https://maps.locationiq.com/v3/staticmap?key=${key}&center=${cityData.lat},${cityData.lon}&zoom=11`}></Card.Img>
                 </Card.Body>
             </Card>
+                {errorMessage}
+            <Weather Weather = {weather} />
         </div>
     )
 }

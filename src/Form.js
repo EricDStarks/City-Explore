@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import axios from 'axios';
 import { useState } from 'react';
 import Weather from "./Weather";
+import Movies from "./Movies"
 
 
 
@@ -22,6 +23,7 @@ function FindCity() {
 
     const [weather, setWeather] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
+    const [movies, setMovies] = useState([])
 
 
     return (
@@ -40,15 +42,23 @@ function FindCity() {
 
                     var response = axios.get(url)
                     response.then(function (res) {
-                        console.log(res.data[0])
+                        // console.log(res.data[0])
                         setCityData(res.data[0])
                     })
 
                     let weather = `http://localhost:3001/Weather?lat=4&lon=4&searchQuery=Paris`
                     let weatherResponse = axios.get(weather)
                     weatherResponse.then(function(res){
-                    console.log(res.data)
+                    // console.log(res.data)
                     setWeather(res.data)
+
+                    let movies = `http://localhost:3001/movies?movie=Memphis`
+                    let moviesResponse = axios.get(movies)
+                    moviesResponse.then(function(res){
+                        console.log(res.data)
+                        setMovies(res.data)
+                    })
+                    
                     })
 
                     weatherResponse.catch(function(error){
@@ -71,6 +81,7 @@ function FindCity() {
             </Card>
                 {errorMessage}
             <Weather Weather = {weather} />
+            <Movies Movies = {movies} />
         </div>
     )
 }

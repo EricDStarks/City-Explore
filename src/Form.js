@@ -52,10 +52,10 @@ function FindCity() {
                     // console.log(res.data)
                     setWeather(res.data)
 
-                    let movies = `http://localhost:3001/movies?movie=Memphis`
+                    let movies = `http://localhost:3001/movies?movie=Paris`
                     let moviesResponse = axios.get(movies)
                     moviesResponse.then(function(res){
-                        console.log(res.data)
+                         console.log(res.data)
                         setMovies(res.data)
                     })
                     

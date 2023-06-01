@@ -46,13 +46,13 @@ function FindCity() {
                         setCityData(res.data[0])
                     })
 
-                    let weather = `http://localhost:3001/Weather?lat=4&lon=4&searchQuery=Paris`
+                    let weather = `https://city-explore-api-q44r.onrender.com/Weather?lat=4&lon=4&searchQuery=Paris`
                     let weatherResponse = axios.get(weather)
                     weatherResponse.then(function(res){
                     // console.log(res.data)
                     setWeather(res.data)
 
-                    let movies = `http://localhost:3001/movies?movie=Paris`
+                    let movies = `https://city-explore-api-q44r.onrender.com/movies?movie=Paris`
                     let moviesResponse = axios.get(movies)
                     moviesResponse.then(function(res){
                          console.log(res.data)
